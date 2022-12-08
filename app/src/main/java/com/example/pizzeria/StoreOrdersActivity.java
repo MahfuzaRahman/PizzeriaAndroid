@@ -16,6 +16,7 @@ public class StoreOrdersActivity extends AppCompatActivity {
     private ListView ordersList;
     private Button clearOrder;
     private ArrayAdapter<String> adapter;
+    private Order[] listasArray;
 
 
     @Override
@@ -30,12 +31,12 @@ public class StoreOrdersActivity extends AppCompatActivity {
         ordersList = findViewById(R.id.pizza_orders_list);
         clearOrder = findViewById(R.id.clear_order_btn);
 
-//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
-//                MainActivity.currentStoreOrders.getStoreOrders());
-//        pizzaList.setAdapter(adapter);
-//        pizzaList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-//        checkNumberOfOrders();
-
-
+        String[] array = (MainActivity.currentStoreOrders.getStoreOrders()).toArray(
+                new String[MainActivity.currentStoreOrders.getStoreOrders().size()]);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, array);
+        ordersList.setAdapter(adapter);
+        ordersList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
     }
+
+
 }
