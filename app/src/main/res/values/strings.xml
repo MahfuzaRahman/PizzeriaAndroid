@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Pizzeria</string>
+
+    // MAIN PAGE STRINGS
+    <string name="chicagostylepizza_desc">Chicago Style Pizza</string>
+    <string name="chicagostylepizzalabel_text">CHICAGO STYLE PIZZA</string>
+    <string name="newyorkstylepizza_desc">New York Style Pizza</string>
+    <string name="newyorkstylepizzalabel_text">NEW YORK STYLE PIZZA</string>
+    <string name="pizzeria_desc">Pizzeria</string>
+    <string name="pizzerialabel_text">STORE ORDERS</string>
+    <string name="currentorder_desc">Current Order</string>
+    <string name="currentorderlabel_text">CURRENT ORDER</string>
+
+    // CHICAGO PAGE STRNGS
+    <string name="chicagosxoxo_desc">Chicago Style Pizza</string>
+
+    // NEW YORK PAGE STRINGS
+    <string name="NYpage_desc"> Style Pizza</string>
+
+    // CURRENT ORDER STRINGS
+    <string name="current_order_desc">Chicago  Pizza</string>
+
+    // STORE ORDER STRINGS
+    <string name="store_orders_desc">Chicago Style </string>
+
+</resources>
