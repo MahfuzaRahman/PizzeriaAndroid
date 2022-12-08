@@ -3,6 +3,7 @@ package com.example.pizzeria;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements AdapterView.OnItemSelectedListener {
@@ -36,6 +38,7 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements A
     private ArrayAdapter<String> adapter;
     private Pizza currentPizza;
     private PizzaFactory pizzaFactory;
+    private Order order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,11 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements A
         setCrust();
         setFlavor();
 
+        Intent intent = getIntent();
+        order = (Order) intent.getSerializableExtra("CURRENT ORDER");
+
+        //Order currentPizzaOrder = (Order) getIntent().getExtras().getSerializable("CURRENT_ORDER");
+
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 setPrice();
@@ -77,11 +85,18 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements A
                     //handle the "YES" click
                     alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            MainActivity.currentPizzaOrder.add(currentPizza);
-                            Log.d("myapp", ""+MainActivity.currentPizzaOrder.getOrderSize());
+//                            Intent intent = getIntent();
+//                            Order order = (Order) intent.getSerializableExtra("CURRENT ORDER");
+
+                            order.add(currentPizza);
+                            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                            intent.putExtra("CURRENT ORDER", order);
+                            startActivity(intent);
+//                            order.add(currentPizza);
+                            //Log.d("myapp", ""+MainActivity.currentPizzaOrder.getOrderSize());
                             reset();
                             Toast.makeText(view.getContext(),
-                                    "Pizza added!", Toast.LENGTH_SHORT).show();
+                                    "Pizza added! " + MainActivity.currentPizzaOrder.getOrderSize() + "", Toast.LENGTH_SHORT).show();
                         }
                         //handle the "NO" click
                     }).setNegativeButton("no", new DialogInterface.OnClickListener() {

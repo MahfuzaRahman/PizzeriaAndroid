@@ -69,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
         ItemsAdapter adapter = new ItemsAdapter(this, items, this);
         recyclerViewPizza.setAdapter(adapter);
         recyclerViewPizza.setLayoutManager(new LinearLayoutManager(this));
+
+        Intent intent = getIntent();
+        currentPizzaOrder = (Order) intent.getSerializableExtra("CURRENT ORDER");
     }
 
     public void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -100,8 +103,16 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
 
 
     private void openChicagoBBQChicken() {
+//        Intent intent = new Intent(getBaseContext(), ChicagoBBQChickenActivity.class);
+//        Bundle extras = intent.getExtras();
+//        extras.putSerializable("CURRENT ORDER", currentPizzaOrder);
+//        startActivity(intent);
 
-        startActivity(new Intent(MainActivity.this, ChicagoBBQChickenActivity.class));
+        Intent intent = new Intent(getBaseContext(), ChicagoBBQChickenActivity.class);
+        intent.putExtra("CURRENT ORDER", currentPizzaOrder);
+        startActivity(intent);
+
+        //startActivity(new Intent(MainActivity.this, ChicagoBBQChickenActivity.class));
 
         // edited to add
     }

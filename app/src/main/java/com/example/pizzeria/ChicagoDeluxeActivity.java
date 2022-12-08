@@ -81,7 +81,7 @@ public class ChicagoDeluxeActivity extends AppCompatActivity {//implements Adapt
                         Log.d("myapp", ""+MainActivity.currentPizzaOrder.getOrderSize());
                         reset();
                         Toast.makeText(view.getContext(),
-                                "Pizza added!", Toast.LENGTH_SHORT).show();
+                                "Pizza added! " + MainActivity.currentPizzaOrder.getOrderSize() + "", Toast.LENGTH_SHORT).show();
                     }
                     //handle the "NO" click
                 }).setNegativeButton("no", new DialogInterface.OnClickListener() {
