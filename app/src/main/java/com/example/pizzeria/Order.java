@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * the order.
  * @author Arunima Tripathy, Mahfuza Rahman
  */
-public class Order implements Customizable, Serializable {
+public class Order implements Customizable {
     private ArrayList<Pizza> pizzaOrders;
     private int orderID;
     private double subTotal;

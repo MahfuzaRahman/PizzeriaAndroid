@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * a size can be chosen.
  * @author Mahfuza Rahman, Arunima Tripathy
  */
-public abstract class Pizza implements Customizable, Serializable {
+public abstract class Pizza implements Customizable {
     private ArrayList<Topping> toppings;
     private Crust crust;
     private Size size;

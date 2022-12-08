@@ -1,6 +1,7 @@
 package com.example.pizzeria;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,7 +16,8 @@ public class CurrentOrderActivity extends AppCompatActivity {
     private TextView orderTotal;
     private ListView pizzaList;
     private ArrayAdapter<String> adapter;
-
+    private Order currentPizzaOrder;
+    private StoreOrders currentStoreOrders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,29 +35,37 @@ public class CurrentOrderActivity extends AppCompatActivity {
                 MainActivity.currentPizzaOrder.getPizzaOrders());
         pizzaList.setAdapter(adapter);
         pizzaList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+        currentPizzaOrder = MainActivity.currentPizzaOrder;
+        currentStoreOrders = MainActivity.currentStoreOrders;
+
+        setSalesTax();
+        setOrderID();
+        setOrderTotal();
+        setSubTotal();
     }
 
     /**
      * Displays the subtotal of the order.
      */
     private void setSubTotal() {
-        MainActivity.currentPizzaOrder.setSubTotal();
-        subTotal.setText("" + String.format("%.2f", MainActivity.currentPizzaOrder.getSubTotal()));
+        currentPizzaOrder.setSubTotal();
+        subTotal.setText("" + String.format("%.2f", currentPizzaOrder.getSubTotal()));
     }
 
     /**
      * Displays the sales tax on the order.
      */
     private void setSalesTax(){
-        MainActivity.currentPizzaOrder.setSalesTax();
-        salesTax.setText("" + String.format("%.2f", MainActivity.currentPizzaOrder.getSalesTax()));
+        currentPizzaOrder.setSalesTax();
+        salesTax.setText("" + String.format("%.2f", currentPizzaOrder.getSalesTax()));
     }
 
     /**
      * Displays the total price of the order.
      */
     private void setOrderTotal(){
-        orderTotal.setText("" + String.format("%.2f", MainActivity.currentPizzaOrder.getOrderTotal()));
+        orderTotal.setText("" + String.format("%.2f", currentPizzaOrder.getOrderTotal()));
     }
 
     /**
@@ -63,8 +73,8 @@ public class CurrentOrderActivity extends AppCompatActivity {
      * Determines the orderID of the order based on all the store orders.
      */
     private void setOrderID(){
-        int orderNumber = MainActivity.currentStoreOrders.getNextOrderID();
-        MainActivity.currentPizzaOrder.setOrderID(orderNumber);
+        int orderNumber = currentStoreOrders.getNextOrderID();
+        currentPizzaOrder.setOrderID(orderNumber);
         orderID.setText("" + orderNumber);
     }
 
@@ -72,10 +82,10 @@ public class CurrentOrderActivity extends AppCompatActivity {
      * Clears the order and alerts the customer that their order was cleared.
      */
     public void clearOrder() {
-        if(MainActivity.currentPizzaOrder.getOrderSize() == 0){
+        if(currentPizzaOrder.getOrderSize() == 0){
             //set alert
         }
-        MainActivity.currentPizzaOrder.clearOrder();
+        currentPizzaOrder.clearOrder();
         //pizzaOrders.getItems().clear();
         orderID.setText("");
         subTotal.setText("");
@@ -193,4 +203,5 @@ public class CurrentOrderActivity extends AppCompatActivity {
 //        setSalesTax();
 //        setOrderTotal();
 //    }
+
 }

@@ -17,7 +17,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterView.OnItemSelectedListener {
-
     private RadioButton small;
     private RadioButton medium;
     private RadioButton large;
@@ -33,10 +32,10 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
     private ArrayAdapter<String> adapter;
     private Pizza currentPizza;
     private PizzaFactory pizzaFactory;
-
     private ArrayList<String> availableToppings;
     private ArrayList<String> selectedToppings;
-
+    private Order currentPizzaOrder;
+    private StoreOrders currentStoreOrders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +47,9 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
 
         pizzaFactory = new ChicagoPizza();
         currentPizza = pizzaFactory.createBuildYourOwn();
+
+        currentPizzaOrder = MainActivity.currentPizzaOrder;
+        currentStoreOrders = MainActivity.currentStoreOrders;
 
         addButton = findViewById(R.id.addButton);
         removeButton = findViewById(R.id.removeButton);
@@ -135,7 +137,6 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
     }
 
     private void removeTopping(String toppingName){
-
         if(selectedToppings.contains(toppingName)){
             selectedToppings.remove(toppingName);
             adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
@@ -176,15 +177,5 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
             addButton.setEnabled(true);
         }
     }
-
-//    @Override
-//    public void onNothingSelected(AdapterView<?> adapterView) {
-//        // nothing XD
-//    }
-//
-//    @Override
-//    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//        //hi(adapterView, view, i, l);
-//    }
 
 }

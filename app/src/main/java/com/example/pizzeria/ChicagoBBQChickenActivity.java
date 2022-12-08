@@ -3,7 +3,6 @@ package com.example.pizzeria;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,7 +21,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements AdapterView.OnItemSelectedListener {
@@ -39,6 +37,7 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements A
     private Pizza currentPizza;
     private PizzaFactory pizzaFactory;
     private Order currentPizzaOrder;
+    private StoreOrders currentStoreOrders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +48,8 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements A
 
         pizzaFactory = new ChicagoPizza();
         currentPizza = pizzaFactory.createBBQChicken();
-
-        Intent intent = getIntent();
-        currentPizzaOrder = (Order) intent.getSerializableExtra("CURRENT ORDER");
+        currentPizzaOrder = MainActivity.currentPizzaOrder;
+        currentStoreOrders = MainActivity.currentStoreOrders;
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.chicago_size_selector);
         small = radioGroup.findViewById(R.id.chicago_small_btn);
@@ -68,11 +66,6 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements A
         setCrust();
         setFlavor();
 
-//        Intent intent = getIntent();
-//        order = (Order) intent.getSerializableExtra("CURRENT ORDER");
-
-        //Order currentPizzaOrder = (Order) getIntent().getExtras().getSerializable("CURRENT_ORDER");
-
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 setPrice();
@@ -83,44 +76,27 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements A
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
-                    alert.setTitle("Add to order?");
-                    alert.setMessage(currentPizza.toString());
-                    //handle the "YES" click
-                    alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-//                            Intent intent = getIntent();
-//                            currentPizzaOrder = (Order) intent.getSerializableExtra("CURRENT ORDER");
-                            currentPizzaOrder.add(currentPizza);
-                            Toast.makeText(view.getContext(),
-                                    "Pizza added!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                            intent.putExtra("ORDER", currentPizzaOrder);
-                            //setResult(RESULT_OK, intent);
-                            finish();
-                            //startActivity(intent);
-//                            reset();
-                            //order.add(currentPizza);
-//                            Toast.makeText(view.getContext(),
-//                                    "Pizza added!", Toast.LENGTH_SHORT).show();
-//                            Intent intent = new Intent(getBaseContext(), MainActivity.class);
-//                            intent.putExtra("CURRENT ORDER", currentPizza);
-//                            reset();
-//                            startActivity(intent);
-//                            order.add(currentPizza);
-                            //Log.d("myapp", ""+MainActivity.currentPizzaOrder.getOrderSize());
-//                            reset();
-//                            Toast.makeText(view.getContext(),
-//                                    "Pizza added! " + MainActivity.currentPizzaOrder.getOrderSize() + "", Toast.LENGTH_SHORT).show();
-                        }
-                        //handle the "NO" click
-                    }).setNegativeButton("no", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(view.getContext(),
-                                    "Pizza not added.", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                    AlertDialog dialog = alert.create();
-                    dialog.show();
+                alert.setTitle("Add to order?");
+                alert.setMessage(currentPizza.toString());
+                //handle the "YES" click
+                alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        currentPizzaOrder.add(currentPizza);
+                        Log.d("myapp", ""+currentPizzaOrder.getOrderSize());
+                        reset();
+                        Toast.makeText(view.getContext(),
+                                "Pizza added! " + currentPizzaOrder.getOrderSize() + "", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                    //handle the "NO" click
+                }).setNegativeButton("no", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(view.getContext(),
+                                "Pizza not added.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                AlertDialog dialog = alert.create();
+                dialog.show();
             }
         });
 
@@ -132,7 +108,7 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements A
     }
 
     private void setCrust(){
-        crust.setText("Crust: PAN");
+        crust.setText("Crust: THIN");
     }
 
     private void setFlavor(){

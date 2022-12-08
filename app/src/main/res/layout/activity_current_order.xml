@@ -81,7 +81,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="15dp"
-            android:background="@color/pizza_orders_list_color" />
+            android:background="@color/pizza_orders_list_color"
+            android:minHeight="100dp" />
     </androidx.cardview.widget.CardView>
 
     <LinearLayout

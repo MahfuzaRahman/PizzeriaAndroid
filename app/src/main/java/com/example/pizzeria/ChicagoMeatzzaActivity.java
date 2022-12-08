@@ -36,6 +36,8 @@ public class ChicagoMeatzzaActivity extends AppCompatActivity {//implements Adap
     private ArrayAdapter<String> adapter;
     private Pizza currentPizza;
     private PizzaFactory pizzaFactory;
+    private Order currentPizzaOrder;
+    private StoreOrders currentStoreOrders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,9 @@ public class ChicagoMeatzzaActivity extends AppCompatActivity {//implements Adap
 
         pizzaFactory = new ChicagoPizza();
         currentPizza = pizzaFactory.createMeatzza();
+
+        currentPizzaOrder = MainActivity.currentPizzaOrder;
+        currentStoreOrders = MainActivity.currentStoreOrders;
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.chicago_size_selector);
         small = radioGroup.findViewById(R.id.chicago_small_btn);
@@ -77,11 +82,11 @@ public class ChicagoMeatzzaActivity extends AppCompatActivity {//implements Adap
                 //handle the "YES" click
                 alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        MainActivity.currentPizzaOrder.add(currentPizza);
-                        Log.d("myapp", ""+MainActivity.currentPizzaOrder.getOrderSize());
+                        currentPizzaOrder.add(currentPizza);
+                        Log.d("myapp", ""+currentPizzaOrder.getOrderSize());
                         reset();
                         Toast.makeText(view.getContext(),
-                                "Pizza added! " + MainActivity.currentPizzaOrder.getOrderSize() + "", Toast.LENGTH_SHORT).show();
+                                "Pizza added! " + currentPizzaOrder.getOrderSize() + "", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                     //handle the "NO" click
@@ -125,7 +130,7 @@ public class ChicagoMeatzzaActivity extends AppCompatActivity {//implements Adap
 
     private void reset(){
         small.setChecked(true);
-        currentPizza = pizzaFactory.createBBQChicken();
+        currentPizza = pizzaFactory.createMeatzza();
         currentPizza.setSize("SMALL");
     }
 }
