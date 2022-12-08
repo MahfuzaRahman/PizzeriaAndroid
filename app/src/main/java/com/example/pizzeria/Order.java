@@ -1,5 +1,6 @@
 package com.example.pizzeria;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  * the order.
  * @author Arunima Tripathy, Mahfuza Rahman
  */
-public class Order implements Customizable {
+public class Order implements Customizable, Serializable {
     private ArrayList<Pizza> pizzaOrders;
     private int orderID;
     private double subTotal;

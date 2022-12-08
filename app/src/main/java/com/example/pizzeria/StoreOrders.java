@@ -3,6 +3,7 @@ package com.example.pizzeria;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * the PizzeRUa. All the store orders can also be exported to a file.
  * @author Mahfuza Rahman, Arunima Tripathy
  */
-public class StoreOrders implements Customizable {
+public class StoreOrders implements Customizable, Serializable {
     private ArrayList<Order> storeOrders;
     private int nextOrderID;
 

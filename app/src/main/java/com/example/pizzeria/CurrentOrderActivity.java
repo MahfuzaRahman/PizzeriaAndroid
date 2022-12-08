@@ -1,6 +1,8 @@
 package com.example.pizzeria;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,6 +13,8 @@ public class CurrentOrderActivity extends AppCompatActivity {
     private TextView subTotal;
     private TextView salesTax;
     private TextView orderTotal;
+    private ListView pizzaList;
+    private ArrayAdapter<String> adapter;
 
 
     @Override
@@ -24,6 +28,11 @@ public class CurrentOrderActivity extends AppCompatActivity {
         subTotal = findViewById(R.id.current_subtotal);
         salesTax = findViewById(R.id.current_sales_tax);
         orderTotal = findViewById(R.id.current_order_total);
+        pizzaList = findViewById(R.id.pizza_orders_list);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
+                MainActivity.currentPizzaOrder.getPizzaOrders());
+        pizzaList.setAdapter(adapter);
+        pizzaList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
     }
 
     /**

@@ -78,6 +78,7 @@ public class ChicagoDeluxeActivity extends AppCompatActivity {//implements Adapt
                 alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         MainActivity.currentPizzaOrder.add(currentPizza);
+                        Log.d("myapp", ""+MainActivity.currentPizzaOrder.getOrderSize());
                         reset();
                         Toast.makeText(view.getContext(),
                                 "Pizza added!", Toast.LENGTH_SHORT).show();
@@ -124,5 +125,6 @@ public class ChicagoDeluxeActivity extends AppCompatActivity {//implements Adapt
     private void reset(){
         small.setChecked(true);
         currentPizza = pizzaFactory.createDeluxe();
+        currentPizza.setSize("SMALL");
     }
 }

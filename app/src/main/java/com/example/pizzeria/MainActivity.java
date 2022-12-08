@@ -30,14 +30,24 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
             R.drawable.chicago_meatzza_pizza, R.drawable.chicago_byo_pizza, R.drawable.ny_bbq_pizza,
             R.drawable.ny_deluxe_pizza, R.drawable.ny_meatzza_pizza, R.drawable.ny_byo_pizza};
 
+//    public MainActivity(){
+//        currentPizzaOrder = new Order();
+//        currentStoreOrders = new StoreOrders();
+//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            currentPizzaOrder = (Order) savedInstanceState.getSerializable("CURRENT_PIZZA_ORDER_KEY");
+            currentStoreOrders = (StoreOrders) savedInstanceState.getSerializable("CURRENT_STORE_ORDERS_KEY");
+        }
+        else{
+            currentPizzaOrder = new Order();
+            currentStoreOrders = new StoreOrders();
+        }
         setContentView(R.layout.activity_main);
-
-
-        currentPizzaOrder = new Order();
-        currentStoreOrders = new StoreOrders();
 
         currentOrder = findViewById(R.id.current_order_card);
         storeOrders = findViewById(R.id.store_orders_card);
@@ -60,6 +70,21 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
         recyclerViewPizza.setAdapter(adapter);
         recyclerViewPizza.setLayoutManager(new LinearLayoutManager(this));
     }
+
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        currentPizzaOrder = (Order) savedInstanceState.getSerializable("CURRENT_PIZZA_ORDER_KEY");
+        currentStoreOrders = (StoreOrders) savedInstanceState.getSerializable("CURRENT_STORE_ORDERS");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putSerializable("CURRENT_PIZZA_ORDER_KEY", currentPizzaOrder);
+        outState.putSerializable("CURRENT_STORE_ORDERS", currentStoreOrders);
+
+        // call superclass to save any view hierarchy
+        super.onSaveInstanceState(outState);
+    }
+
 
     private void setupAvailableItems(){
 
@@ -197,6 +222,21 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
 //        });
 //    }
 
+
+    @Override
+    public void onStop(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void onPause(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void onResume(Bundle savedInstanceState) {
+
+    }
 
     @Override
     public void onItemClicked(Item i) {
