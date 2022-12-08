@@ -18,8 +18,11 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
     private RecyclerView recyclerViewPizza;
     private ArrayList<Item> items = new ArrayList<>();
 
-    public static PizzaFactory pizzaFactory;
-    public static Pizza currentPizza;
+//    public static PizzaFactory pizzaFactory;
+//    public static Pizza currentPizza;
+
+    public static Order currentPizzaOrder;
+    public static StoreOrders currentStoreOrders;
 
     private int [] itemImages = {R.drawable.chicago_bbq_pizza, R.drawable.chicago_deluxe_pizza,
             R.drawable.chicago_meatzza_pizza, R.drawable.chicago_byo_pizza, R.drawable.ny_bbq_pizza,
@@ -29,6 +32,10 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        currentPizzaOrder = new Order();
+        currentStoreOrders = new StoreOrders();
 
         recyclerViewPizza = findViewById(R.id.recyclerViewPizza);
         setupAvailableItems();

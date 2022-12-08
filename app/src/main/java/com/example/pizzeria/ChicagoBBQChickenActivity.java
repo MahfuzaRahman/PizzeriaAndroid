@@ -1,12 +1,15 @@
 package com.example.pizzeria;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -21,82 +24,105 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements AdapterView.OnItemSelectedListener {
-
-    //private RecyclerView recyclerViewAvailable;
-    private Spinner FlavorSpinner;
-    private Button addButton;
-    private Button removeButton;
-    private static RadioButton smallButton;
-    private static RadioButton mediumButton;
-    private static RadioButton largeButton;
-    private static TextView pizzaPrice;
-    private TextView crustText;
-
-    private ListView listview;
+    private RadioButton small;
+    private RadioButton medium;
+    private RadioButton large;
+    private ImageView pizzaPic;
+    private TextView pizzaPrice;
+    private TextView crust;
+    private TextView flavor;
+    private ListView toppings;
+    private Button addToOrder;
     private ArrayAdapter<String> adapter;
-
+    private Pizza currentPizza;
+    private PizzaFactory pizzaFactory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pizza_layout);
+        setContentView(R.layout.activity_chicago_pizza);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Chicago BBQ Chicken Pizza");
 
-        MainActivity.pizzaFactory = new ChicagoPizza();
-        MainActivity.currentPizza = MainActivity.pizzaFactory.createBBQChicken();
+        pizzaFactory = new ChicagoPizza();
+        currentPizza = pizzaFactory.createBBQChicken();
 
-        smallButton = findViewById(R.id.smallButton);
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.sizeSelection);
-        smallButton = radioGroup.findViewById(R.id.smallButton);
-        mediumButton = radioGroup.findViewById(R.id.mediumButton);
-        largeButton = radioGroup.findViewById(R.id.largeButton);
-        smallButton.setChecked(true);
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.chicago_size_selector);
+        small = radioGroup.findViewById(R.id.chicago_small_btn);
+        medium = radioGroup.findViewById(R.id.chicago_medium_btn);
+        large = radioGroup.findViewById(R.id.chicago_large_btn);
+        small.setChecked(true);
 
-        pizzaPrice = findViewById(R.id.pizzaPrice);
-        crustText = findViewById(R.id.crustText);
+        pizzaPic = findViewById(R.id.chicago_pizza_image);
+        pizzaPrice = findViewById(R.id.chicago_pizza_price);
+        crust = findViewById(R.id.chicago_crust_label);
+        flavor = findViewById(R.id.chicago_flavor);
+        addToOrder = findViewById(R.id.chicago_add_to_order_btn);
         setPrice();
         setCrust();
+        setFlavor();
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-        {
-            public void onCheckedChanged(RadioGroup group, int checkedId)
-            {
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
                 setPrice();
             }
         });
 
+        addToOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+                    alert.setTitle("Add to order?");
+                    alert.setMessage(currentPizza.toString());
+                    //handle the "YES" click
+                    alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.currentPizzaOrder.add(currentPizza);
+                            reset();
+                            Toast.makeText(view.getContext(),
+                                    "Pizza added!", Toast.LENGTH_SHORT).show();
+                        }
+                        //handle the "NO" click
+                    }).setNegativeButton("no", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(view.getContext(),
+                                    "Pizza not added.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    AlertDialog dialog = alert.create();
+                    dialog.show();
+            }
+        });
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
-                MainActivity.currentPizza.getToppings());
-        listview = (ListView) findViewById(R.id.listViewToppings);
-        listview.setAdapter(adapter);
+                currentPizza.getToppings());
+        toppings = (ListView) findViewById(R.id.chicago_toppings_list);
+        toppings.setAdapter(adapter);
 
     }
-
 
     private void setCrust(){
-        crustText.setText("Crust: " + MainActivity.currentPizza.getCrust().toString());
+        crust.setText("Crust: PAN");
     }
 
-    public static void setPrice(){
-        if(smallButton.isChecked())
-            MainActivity.currentPizza.setSize("SMALL");
-        else if(mediumButton.isChecked())
-            MainActivity.currentPizza.setSize("MEDIUM");
-        else if(largeButton.isChecked())
-            MainActivity.currentPizza.setSize("LARGE");
+    private void setFlavor(){
+        flavor.setText("BBQ Chicken");
+        pizzaPic.setImageResource(R.drawable.chicago_bbq_pizza);
+    }
+
+    private void setPrice(){
+        if(small.isChecked())
+            currentPizza.setSize("SMALL");
+        else if(medium.isChecked())
+            currentPizza.setSize("MEDIUM");
+        else if(large.isChecked())
+            currentPizza.setSize("LARGE");
         pizzaPrice.setText("");
-        pizzaPrice.setText("" + MainActivity.currentPizza.price());
+        pizzaPrice.setText("$" + currentPizza.price());
     }
 
-
-//    @Override
-//    public void onNothingSelected(AdapterView<?> adapterView) {
-//        // nothing XD
-//    }
-//
-//    @Override
-//    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//        //hi(adapterView, view, i, l);
-//    }
-
+    private void reset(){
+        small.setChecked(true);
+        currentPizza = pizzaFactory.createBBQChicken();
+    }
 }

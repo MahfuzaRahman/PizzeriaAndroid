@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="235dp"
+            android:layout_width="220dp"
             android:layout_height="55dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
@@ -36,10 +36,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="10dp"
-                android:text="ORDER A PIZZA!"
                 android:fontFamily="sans-serif-black"
+                android:text="ORDER A PIZZA!"
                 android:textColor="@color/black"
-                android:textSize="27sp" />
+                android:textSize="25sp" />
 
         </androidx.cardview.widget.CardView>
 

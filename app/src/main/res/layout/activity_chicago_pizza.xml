@@ -152,6 +152,7 @@
             app:cardCornerRadius="25dp">
 
             <ListView
+                android:id="@+id/chicago_toppings_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
@@ -190,7 +191,7 @@
                     android:background="@color/white"
                     android:fontFamily="sans-serif-black"
                     android:padding="5dp"
-                    android:text="Pizza Price: $"
+                    android:text="Pizza Price: "
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
