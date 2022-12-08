@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
     private CardView storeOrders;
     private ArrayList<Item> items = new ArrayList<>();
 
-    public static Order currentPizzaOrder;
-    public static StoreOrders currentStoreOrders;
+    public static Order currentPizzaOrder = new Order();
+    public static StoreOrders currentStoreOrders = new StoreOrders();
 
     private int [] itemImages = {R.drawable.chicago_bbq_pizza, R.drawable.chicago_deluxe_pizza,
             R.drawable.chicago_meatzza_pizza, R.drawable.chicago_byo_pizza, R.drawable.ny_bbq_pizza,
@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        currentPizzaOrder = new Order();
-        currentStoreOrders = new StoreOrders();
+//        currentPizzaOrder = new Order();
+//        currentStoreOrders = new StoreOrders();
 
         currentOrder = findViewById(R.id.current_order_card);
         storeOrders = findViewById(R.id.store_orders_card);
