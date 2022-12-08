@@ -38,7 +38,7 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements A
     private ArrayAdapter<String> adapter;
     private Pizza currentPizza;
     private PizzaFactory pizzaFactory;
-    private Order order;
+    private Order currentPizzaOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,9 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements A
 
         pizzaFactory = new ChicagoPizza();
         currentPizza = pizzaFactory.createBBQChicken();
+
+        Intent intent = getIntent();
+        currentPizzaOrder = (Order) intent.getSerializableExtra("CURRENT ORDER");
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.chicago_size_selector);
         small = radioGroup.findViewById(R.id.chicago_small_btn);
@@ -65,8 +68,8 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements A
         setCrust();
         setFlavor();
 
-        Intent intent = getIntent();
-        order = (Order) intent.getSerializableExtra("CURRENT ORDER");
+//        Intent intent = getIntent();
+//        order = (Order) intent.getSerializableExtra("CURRENT ORDER");
 
         //Order currentPizzaOrder = (Order) getIntent().getExtras().getSerializable("CURRENT_ORDER");
 
@@ -86,17 +89,28 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements A
                     alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
 //                            Intent intent = getIntent();
-//                            Order order = (Order) intent.getSerializableExtra("CURRENT ORDER");
-
-                            order.add(currentPizza);
+//                            currentPizzaOrder = (Order) intent.getSerializableExtra("CURRENT ORDER");
+                            currentPizzaOrder.add(currentPizza);
+                            Toast.makeText(view.getContext(),
+                                    "Pizza added!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                            intent.putExtra("CURRENT ORDER", order);
-                            startActivity(intent);
+                            intent.putExtra("ORDER", currentPizzaOrder);
+                            //setResult(RESULT_OK, intent);
+                            finish();
+                            //startActivity(intent);
+//                            reset();
+                            //order.add(currentPizza);
+//                            Toast.makeText(view.getContext(),
+//                                    "Pizza added!", Toast.LENGTH_SHORT).show();
+//                            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+//                            intent.putExtra("CURRENT ORDER", currentPizza);
+//                            reset();
+//                            startActivity(intent);
 //                            order.add(currentPizza);
                             //Log.d("myapp", ""+MainActivity.currentPizzaOrder.getOrderSize());
-                            reset();
-                            Toast.makeText(view.getContext(),
-                                    "Pizza added! " + MainActivity.currentPizzaOrder.getOrderSize() + "", Toast.LENGTH_SHORT).show();
+//                            reset();
+//                            Toast.makeText(view.getContext(),
+//                                    "Pizza added! " + MainActivity.currentPizzaOrder.getOrderSize() + "", Toast.LENGTH_SHORT).show();
                         }
                         //handle the "NO" click
                     }).setNegativeButton("no", new DialogInterface.OnClickListener() {

@@ -82,6 +82,7 @@ public class ChicagoMeatzzaActivity extends AppCompatActivity {//implements Adap
                         reset();
                         Toast.makeText(view.getContext(),
                                 "Pizza added! " + MainActivity.currentPizzaOrder.getOrderSize() + "", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                     //handle the "NO" click
                 }).setNegativeButton("no", new DialogInterface.OnClickListener() {

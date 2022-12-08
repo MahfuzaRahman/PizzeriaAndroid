@@ -2,6 +2,7 @@ package com.example.pizzeria;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * a size can be chosen.
  * @author Mahfuza Rahman, Arunima Tripathy
  */
-public abstract class Pizza implements Customizable {
+public abstract class Pizza implements Customizable, Serializable {
     private ArrayList<Topping> toppings;
     private Crust crust;
     private Size size;

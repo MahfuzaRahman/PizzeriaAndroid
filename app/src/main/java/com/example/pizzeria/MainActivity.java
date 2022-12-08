@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
 //    public static PizzaFactory pizzaFactory;
 //    public static Pizza currentPizza;
 
-    public static Order currentPizzaOrder;
+    public static  Order currentPizzaOrder;
     public static StoreOrders currentStoreOrders;
 
     private int [] itemImages = {R.drawable.chicago_bbq_pizza, R.drawable.chicago_deluxe_pizza,
@@ -39,15 +39,47 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (savedInstanceState != null) {
-            currentPizzaOrder = (Order) savedInstanceState.getSerializable("CURRENT_PIZZA_ORDER_KEY");
-            currentStoreOrders = (StoreOrders) savedInstanceState.getSerializable("CURRENT_STORE_ORDERS_KEY");
-        }
-        else{
+//        if (savedInstanceState != null) {
+//            Intent intent = getIntent();
+//            currentPizzaOrder = (Order) intent.getSerializableExtra("CURRENT ORDER");
+//            //currentPizzaOrder = (Order) savedInstanceState.getSerializable("CURRENT_PIZZA_ORDER_KEY");
+//            //currentStoreOrders = (StoreOrders) savedInstanceState.getSerializable("CURRENT_STORE_ORDERS_KEY");
+//        }
+//        else{
+//            currentPizzaOrder = new Order();
+//            currentStoreOrders = new StoreOrders();
+//        //}
+
+//        Intent intent = getIntent();
+//        Order order = (Order) intent.getSerializableExtra("CURRENT ORDER");
+//        if(order != null){
+//            currentPizzaOrder = order;
+//        } else {
             currentPizzaOrder = new Order();
             currentStoreOrders = new StoreOrders();
-        }
+            //}
+        //}
         setContentView(R.layout.activity_main);
+//        Intent intent = getIntent();
+//        Pizza pizza = (Pizza) intent.getSerializableExtra("CURRENT PIZZA");
+//
+//        if(pizza!=null){
+//            currentPizzaOrder.add(pizza);
+//            Toast.makeText(getApplicationContext(),
+//                    "Pizza added!" + currentPizzaOrder.getOrderSize(), Toast.LENGTH_SHORT).show();
+//
+//        }
+
+//        Intent intent = getIntent();
+//        currentPizzaOrder = (Order) intent.getSerializableExtra("ORDER");
+
+//        if(currentPizzaOrder.getOrderSize()!=0){
+//            //currentPizzaOrder.add(pizza);
+//            Toast.makeText(getApplicationContext(),
+//                    "Pizza added!" + currentPizzaOrder.getOrderSize(), Toast.LENGTH_SHORT).show();
+//
+//        }
+//        setContentView(R.layout.activity_main);
 
         currentOrder = findViewById(R.id.current_order_card);
         storeOrders = findViewById(R.id.store_orders_card);
@@ -70,23 +102,23 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
         recyclerViewPizza.setAdapter(adapter);
         recyclerViewPizza.setLayoutManager(new LinearLayoutManager(this));
 
-        Intent intent = getIntent();
-        currentPizzaOrder = (Order) intent.getSerializableExtra("CURRENT ORDER");
+//        Intent intent = getIntent();
+//        currentPizzaOrder = (Order) intent.getSerializableExtra("CURRENT ORDER");
     }
 
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        currentPizzaOrder = (Order) savedInstanceState.getSerializable("CURRENT_PIZZA_ORDER_KEY");
-        currentStoreOrders = (StoreOrders) savedInstanceState.getSerializable("CURRENT_STORE_ORDERS");
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable("CURRENT_PIZZA_ORDER_KEY", currentPizzaOrder);
-        outState.putSerializable("CURRENT_STORE_ORDERS", currentStoreOrders);
-
-        // call superclass to save any view hierarchy
-        super.onSaveInstanceState(outState);
-    }
+//    public void onRestoreInstanceState(Bundle savedInstanceState) {
+//        currentPizzaOrder = (Order) savedInstanceState.getSerializable("CURRENT_PIZZA_ORDER_KEY");
+//        currentStoreOrders = (StoreOrders) savedInstanceState.getSerializable("CURRENT_STORE_ORDERS");
+//    }
+//
+//    @Override
+//    public void onSaveInstanceState(Bundle outState) {
+//        outState.putSerializable("CURRENT_PIZZA_ORDER_KEY", currentPizzaOrder);
+//        outState.putSerializable("CURRENT_STORE_ORDERS", currentStoreOrders);
+//
+//        // call superclass to save any view hierarchy
+//        super.onSaveInstanceState(outState);
+//    }
 
 
     private void setupAvailableItems(){
@@ -108,19 +140,25 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
 //        extras.putSerializable("CURRENT ORDER", currentPizzaOrder);
 //        startActivity(intent);
 
+//        Intent intent = new Intent(getBaseContext(), ChicagoBBQChickenActivity.class);
+//        intent.putExtra("CURRENT ORDER", currentPizzaOrder);
+        //startActivity(intent);
+
         Intent intent = new Intent(getBaseContext(), ChicagoBBQChickenActivity.class);
         intent.putExtra("CURRENT ORDER", currentPizzaOrder);
         startActivity(intent);
-
         //startActivity(new Intent(MainActivity.this, ChicagoBBQChickenActivity.class));
-
+//        Intent intent = getIntent();
+//        Pizza pizza = (Pizza) intent.getSerializableExtra("CURRENT PIZZA");
+//        currentPizzaOrder.add(pizza);
+//        Toast.makeText(getApplicationContext(),
+//                "Pizza added!" + currentPizzaOrder.getOrderSize(), Toast.LENGTH_SHORT).show();
         // edited to add
     }
 
     private void openChicagoDeluxe() {
 
         startActivity(new Intent(MainActivity.this, ChicagoDeluxeActivity.class));
-
         // edited to add
     }
 
