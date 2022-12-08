@@ -10,7 +10,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/chicago_style_label"
@@ -66,7 +69,7 @@
                     <RadioButton
                         android:id="@+id/chicago_small_btn"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:background="@color/white"
                         android:fontFamily="sans-serif-black"
                         android:text="SMALL (h)" />
@@ -74,7 +77,7 @@
                     <RadioButton
                         android:id="@+id/chicago_medium_btn"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:background="@color/white"
                         android:fontFamily="sans-serif-black"
                         android:text="MEDIUM (h)" />
@@ -82,7 +85,7 @@
                     <RadioButton
                         android:id="@+id/chicago_large_btn"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:background="@color/white"
                         android:fontFamily="sans-serif-black"
                         android:text="LARGE (h)" />
