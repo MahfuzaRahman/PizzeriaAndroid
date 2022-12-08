@@ -7,59 +7,42 @@
     android:background="@color/ny_style_background"
     tools:context=".NewYorkPizzaActivity">
 
-    <TextView
-        android:id="@+id/new_york_style_pizza_label"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:fontFamily="sans-serif-black"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="20dp"
-        android:text="NEW YORK STYLE PIZZA"
-        android:textColor="@color/black"
-        android:textSize="31sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="4dp" />
+        android:layout_height="100dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/new_york_style_label"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif-black"
+            android:text="NEW YORK"
+            android:textColor="@color/black"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/new_york_flavor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif-black"
+            android:paddingTop="5dp"
+            android:text="Build Your Own"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="265dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:cardCornerRadius="25dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Spinner
-                    android:id="@+id/ny_style_flavor_spinner"
-                    android:layout_width="300dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="15dp"
-                    android:background="@color/white"
-                    android:spinnerMode="dropdown"
-                    android:theme="@style/ThemeOverlay.AppCompat.Light" />
-
-                <TextView
-                    android:id="@+id/ny_style_spinner_arrow"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:text="▼" />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,14 +57,14 @@
                 app:cardCornerRadius="25dp">
 
                 <RadioGroup
-                    android:id="@+id/ny_style_size_selector"
+                    android:id="@+id/new_york_size_selector"
                     android:layout_width="130dp"
                     android:layout_height="140dp"
                     android:layout_margin="5dp"
                     android:layout_marginTop="5dp">
 
                     <RadioButton
-                        android:id="@+id/ny_style_small_button"
+                        android:id="@+id/new_york_small_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -89,7 +72,7 @@
                         android:text="SMALL (h)" />
 
                     <RadioButton
-                        android:id="@+id/ny_style_medium_button"
+                        android:id="@+id/new_york_medium_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -97,7 +80,7 @@
                         android:text="MEDIUM (h)" />
 
                     <RadioButton
-                        android:id="@+id/ny_style_large_button"
+                        android:id="@+id/new_york_large_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -108,14 +91,13 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="90dp" >
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginStart="60dp"
+                app:cardCornerRadius="90dp">
 
                 <ImageView
-                    android:id="@+id/ny_pizza_image"
+                    android:id="@+id/new_york_pizza_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleX="0.75"
@@ -135,35 +117,19 @@
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="25dp">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/new_york_crust_label"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/ny_crust_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="sans-serif-black"
-                    android:padding="5dp"
-                    android:text="Crust:"
-                    android:textColor="@color/black"
-                    android:textSize="25sp" />
-
-                <TextView
-                    android:id="@+id/ny_crust_text"
-                    android:layout_width="200dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/white"
-                    android:fontFamily="sans-serif-black"
-                    android:padding="5dp"
-                    android:textColor="@color/black"
-                    android:textSize="25sp" />
-            </LinearLayout>
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:padding="5dp"
+                android:text="Crust: HAND TOSSED "
+                android:textColor="@color/black"
+                android:textSize="25sp" />
 
         </androidx.cardview.widget.CardView>
 
@@ -172,7 +138,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="345dp"
+        android:layout_marginTop="320dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -182,16 +148,12 @@
             android:layout_margin="20dp"
             app:cardCornerRadius="25dp">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ny_toppings_recycler"
+            <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:clickable="true"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
-                android:scrollbars="vertical">
+                android:layout_margin="20dp"
+                android:background="@color/pizza_orders_list_color" />
 
-            </androidx.recyclerview.widget.RecyclerView>
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
@@ -199,7 +161,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="520dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -216,7 +178,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/ny_pizza_price_label"
+                    android:id="@+id/new_york_pizza_price_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
@@ -230,7 +192,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/ny_pizza_price"
+                    android:id="@+id/new_york_pizza_price"
                     android:layout_width="180dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="15dp"
@@ -250,19 +212,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="620dp"
+        android:layout_marginTop="590dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/ny_pizza_add_button"
+            android:id="@+id/new_york_add_to_order_btn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:text="Add To Order"
-            app:cornerRadius="25dp"
-            />
+            app:cornerRadius="25dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
     private RecyclerView recyclerViewPizza;
     private ArrayList<Item> items = new ArrayList<>();
 
-
     private int [] itemImages = {R.drawable.chicago_bbq_pizza, R.drawable.chicago_deluxe_pizza,
             R.drawable.chicago_meatzza_pizza, R.drawable.chicago_byo_pizza, R.drawable.ny_bbq_pizza,
             R.drawable.ny_deluxe_pizza, R.drawable.ny_meatzza_pizza, R.drawable.ny_byo_pizza};
