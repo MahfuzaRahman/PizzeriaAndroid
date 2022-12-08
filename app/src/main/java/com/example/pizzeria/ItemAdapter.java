@@ -37,7 +37,6 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsHolder>{
     private ArrayList<Item> items; //need the data binding to each row of RecyclerView
     private SelectListener listener;
 
-
     public ItemsAdapter(Context context, ArrayList<Item> items, SelectListener l) {
         this.context = context;
         this.items = items;
@@ -56,7 +55,6 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsHolder>{
         //inflate the row layout for the items
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.row_view, parent, false);
-
         return new ItemsHolder(view);
     }
 

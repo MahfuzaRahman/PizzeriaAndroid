@@ -10,6 +10,9 @@
         android:id="@+id/mainContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         app:cardBackgroundColor="@color/card_yellow"
@@ -27,14 +30,14 @@
 
             <TextView
                 android:id="@+id/tv_flavor"
-                android:layout_width="250dp"
+                android:layout_width="218dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
-                android:padding="2dp"
                 android:fontFamily="sans-serif-black"
+                android:padding="2dp"
                 android:text="CHICAGO STYLE PIZZA BUILD YOUR OWN"
                 android:textColor="@color/white"
-                android:textSize="21sp" />
+                android:textSize="15sp" />
 
             <ImageView
                 android:id="@+id/im_item"

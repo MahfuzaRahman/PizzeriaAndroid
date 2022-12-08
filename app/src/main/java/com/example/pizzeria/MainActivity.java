@@ -66,10 +66,10 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
     }
 
     private void setupAvailableItems(){
-        String [] itemNames = {"Chicago BBQ Chicken Pizza", "Chicago Deluxe Pizza", "Chicago Meatzza Pizza",
-                "Chicago BuildYourOwn Pizza", "NY BBQ Chicken Pizza", "NY Deluxe Pizza", "NY Meatzza Pizza",
-                "NY BuildYourOwn Pizza"};
-
+        String [] itemNames = {"Chicago Style Pizza\nBBQ Chicken", "Chicago Style Pizza\nDeluxe",
+                "Chicago Style Pizza\nMeatzza", "Chicago Style Pizza\nBuild Your Own", "New York " +
+                "Style Pizza\nBBQ Chicken", "New York Style Pizza\nDeluxe",
+                "New York Style Pizza\nMeatzza", "New York Style Pizza\nBuild Your Own"};
         for (int i = 0; i < itemNames.length; i++)
             items.add(new Item(itemNames[i], itemImages[i]));
     }
