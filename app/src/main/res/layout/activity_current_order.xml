@@ -213,12 +213,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/cancel_order_btn"
+            android:id="@+id/clear_order_btn"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_weight="1"
-            android:text="Cancel Order"
+            android:text="Clear Order"
             app:cornerRadius="25dp" />
 
         <Button

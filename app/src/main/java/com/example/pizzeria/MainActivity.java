@@ -194,6 +194,9 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
 //        });
 //    }
 
+    public void addOrderToStoreOrder(Order order){
+        currentStoreOrders.add(order);
+    }
 
 
     @Override
