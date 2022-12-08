@@ -15,7 +15,6 @@
         android:paddingStart="20dp"
         android:paddingTop="20dp"
         android:paddingEnd="20dp"
-        android:text="CHICAGO STYLE PIZZA"
         android:textColor="@color/black"
         android:textSize="32sp"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,39 +26,6 @@
         android:layout_marginTop="80dp"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:cardCornerRadius="25dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Spinner
-                    android:id="@+id/flavorSpinner"
-                    android:layout_width="300dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="15dp"
-                    android:background="@color/white"
-                    android:spinnerMode="dropdown"
-                    android:theme="@style/ThemeOverlay.AppCompat.Light" />
-
-                <TextView
-                    android:id="@+id/spinner_arrow"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:text="▼" />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -183,10 +149,11 @@
             app:cardCornerRadius="25dp">
 
             <ListView
+                android:id="@+id/listViewToppings"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
-                android:background="@color/pizza_orders_list_color"/>
+                android:background="@color/pizza_orders_list_color" />
 
         </androidx.cardview.widget.CardView>
 

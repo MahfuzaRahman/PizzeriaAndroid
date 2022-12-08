@@ -77,6 +77,8 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsHolder>{
             @Override
             public void onClick(View view) {
                 listener.onItemClicked(items.get(position));
+
+
             }
         });
 
@@ -111,14 +113,14 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsHolder>{
             /* set onClickListener for the row layout,
              * clicking on a row will navigate to another Activity
              */
-//            parentLayout.setOnClickListener(new View.OnClickListener() {
+//            cardView.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View view) {
 //
 //
-////                    Intent intent = new Intent(itemView.getContext(), ItemSelectedActivity.class);
-////                    intent.putExtra("ITEM", tv_name.getText());
-////                    itemView.getContext().startActivity(intent);
+//                    Intent intent = new Intent(itemView.getContext(), ItemSelectedActivity.class);
+//                    intent.putExtra("ITEM", tv_name.getText());
+//                    itemView.getContext().startActivity(intent);
 //                }
 //            });
         }

@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
     private RecyclerView recyclerViewPizza;
     private ArrayList<Item> items = new ArrayList<>();
 
+    public static PizzaFactory pizzaFactory;
+    public static Pizza currentPizza;
+
     private int [] itemImages = {R.drawable.chicago_bbq_pizza, R.drawable.chicago_deluxe_pizza,
             R.drawable.chicago_meatzza_pizza, R.drawable.chicago_byo_pizza, R.drawable.ny_bbq_pizza,
             R.drawable.ny_deluxe_pizza, R.drawable.ny_meatzza_pizza, R.drawable.ny_byo_pizza};
@@ -32,12 +35,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
         ItemsAdapter adapter = new ItemsAdapter(this, items, this);
         recyclerViewPizza.setAdapter(adapter);
         recyclerViewPizza.setLayoutManager(new LinearLayoutManager(this));
-
-
-//        openChicago();
-//        openNewYork();
-//        openCurrentOrder();
-//        openPizzeria();
     }
 
     private void setupAvailableItems(){
@@ -54,7 +51,29 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
 
 
     private void openChicagoBBQChicken() {
-        startActivity(new Intent(MainActivity.this, ChicagoPizzaActivity.class));
+
+        startActivity(new Intent(MainActivity.this, ChicagoBBQChickenActivity.class));
+
+        // edited to add
+    }
+
+    private void openChicagoDeluxe() {
+
+        startActivity(new Intent(MainActivity.this, ChicagoDeluxeActivity.class));
+
+        // edited to add
+    }
+
+    private void openChicagoMeatzza() {
+
+        startActivity(new Intent(MainActivity.this, ChicagoMeatzzaActivity.class));
+
+        // edited to add
+    }
+
+    private void openChicagoBYO() {
+
+        startActivity(new Intent(MainActivity.this, ChicagoBYOActivity.class));
 
         // edited to add
     }
@@ -163,15 +182,15 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
         if(name.equals("Chicago BBQ Chicken Pizza")){
             openChicagoBBQChicken();
         }
-//        else if(name.equals("Chicago Deluxe Pizza")){
-//            openChicagoDeluxe();
-//        }
-//        else if(name.equals("Chicago Meatzza Pizza")){
-//            openChicagoMeatzza();
-//        }
-//        else if(name.equals("Chicago BuildYourOwn Pizza")){
-//            openChicagoBYO();
-//        }
+        else if(name.equals("Chicago Deluxe Pizza")){
+            openChicagoDeluxe();
+        }
+        else if(name.equals("Chicago Meatzza Pizza")){
+            openChicagoMeatzza();
+        }
+        else if(name.equals("Chicago BuildYourOwn Pizza")){
+            openChicagoBYO();
+        }
 //        else if(name.equals("NY BBQ Chicken Pizza")){
 //            openNewYorkBBQChicken();
 //        }
