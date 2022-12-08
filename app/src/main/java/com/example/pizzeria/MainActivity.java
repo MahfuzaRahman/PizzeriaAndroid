@@ -16,6 +16,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements SelectListener{
 
     private RecyclerView recyclerViewPizza;
+    private CardView currentOrder;
+    private CardView storeOrders;
     private ArrayList<Item> items = new ArrayList<>();
 
 //    public static PizzaFactory pizzaFactory;
@@ -36,6 +38,21 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
 
         currentPizzaOrder = new Order();
         currentStoreOrders = new StoreOrders();
+
+        currentOrder = findViewById(R.id.current_order_card);
+        storeOrders = findViewById(R.id.store_orders_card);
+        currentOrder.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CurrentOrderActivity.class));
+                Toast.makeText(getApplicationContext(), "Current Order", Toast.LENGTH_SHORT).show();
+            }
+        });
+        storeOrders.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, StoreOrdersActivity.class));
+                Toast.makeText(getApplicationContext(), "Store Orders", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         recyclerViewPizza = findViewById(R.id.recyclerViewPizza);
         setupAvailableItems();

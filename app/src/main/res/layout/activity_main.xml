@@ -44,13 +44,14 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/current_order_card"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="@color/pizza_orders_list_color"
-            app:cardCornerRadius="90dp" >
+            app:cardCornerRadius="90dp">
 
             <ImageView
                 android:id="@+id/current_order_image"
@@ -62,13 +63,14 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/store_orders_card"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="@color/pizza_orders_list_color"
-            app:cardCornerRadius="90dp" >
+            app:cardCornerRadius="90dp">
 
             <ImageView
                 android:id="@+id/store_orders_image"
