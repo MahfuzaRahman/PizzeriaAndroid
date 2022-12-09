@@ -71,24 +71,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="@color/white"
-                        android:fontFamily="sans-serif-black"
-                        android:text="SMALL (h)" />
+                        android:fontFamily="sans-serif-black" />
 
                     <RadioButton
                         android:id="@+id/chicago_medium_btn"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="@color/white"
-                        android:fontFamily="sans-serif-black"
-                        android:text="MEDIUM (h)" />
+                        android:fontFamily="sans-serif-black" />
 
                     <RadioButton
                         android:id="@+id/chicago_large_btn"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="@color/white"
-                        android:fontFamily="sans-serif-black"
-                        android:text="LARGE (h)" />
+                        android:fontFamily="sans-serif-black" />
 
                 </RadioGroup>
             </androidx.cardview.widget.CardView>

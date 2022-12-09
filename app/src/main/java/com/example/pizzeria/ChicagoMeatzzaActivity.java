@@ -44,7 +44,7 @@ public class ChicagoMeatzzaActivity extends AppCompatActivity {//implements Adap
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chicago_pizza);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Chicago Meatzza Pizza");
+        getSupportActionBar().setTitle(getString(R.string.chicago_meatzza_title));
 
         pizzaFactory = new ChicagoPizza();
         currentPizza = pizzaFactory.createMeatzza();
@@ -54,8 +54,11 @@ public class ChicagoMeatzzaActivity extends AppCompatActivity {//implements Adap
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.chicago_size_selector);
         small = radioGroup.findViewById(R.id.chicago_small_btn);
+        small.setText(getString(R.string.small_text));
         medium = radioGroup.findViewById(R.id.chicago_medium_btn);
+        medium.setText(getString(R.string.medium_text));
         large = radioGroup.findViewById(R.id.chicago_large_btn);
+        large.setText(getString(R.string.large_text));
         small.setChecked(true);
 
         pizzaPic = findViewById(R.id.chicago_pizza_image);
@@ -77,23 +80,20 @@ public class ChicagoMeatzzaActivity extends AppCompatActivity {//implements Adap
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
-                alert.setTitle("Add to order?");
+                alert.setTitle(getString(R.string.alert_add_to_order));
                 alert.setMessage(currentPizza.toString());
                 //handle the "YES" click
-                alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                alert.setPositiveButton(getString(R.string.yes_text), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         currentPizzaOrder.add(currentPizza);
-                        Log.d("myapp", ""+currentPizzaOrder.getOrderSize());
                         reset();
-                        Toast.makeText(view.getContext(),
-                                "Pizza added! " + currentPizzaOrder.getOrderSize() + "", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                     //handle the "NO" click
-                }).setNegativeButton("no", new DialogInterface.OnClickListener() {
+                }).setNegativeButton(getString(R.string.no_text), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(view.getContext(),
-                                "Pizza not added.", Toast.LENGTH_SHORT).show();
+                                getString(R.string.pizza_not_added), Toast.LENGTH_SHORT).show();
                     }
                 });
                 AlertDialog dialog = alert.create();
@@ -109,11 +109,11 @@ public class ChicagoMeatzzaActivity extends AppCompatActivity {//implements Adap
     }
 
     private void setCrust(){
-        crust.setText("Crust: STUFFED");
+        crust.setText(getString(R.string.crust_stuffed));
     }
 
     private void setFlavor(){
-        flavor.setText("Meatzza");
+        flavor.setText(getString(R.string.meatzza_text));
         pizzaPic.setImageResource(R.drawable.chicago_meatzza_pizza);
     }
 
@@ -125,7 +125,7 @@ public class ChicagoMeatzzaActivity extends AppCompatActivity {//implements Adap
         else if(large.isChecked())
             currentPizza.setSize("LARGE");
         pizzaPrice.setText("");
-        pizzaPrice.setText("$" + currentPizza.price());
+        pizzaPrice.setText(getString(R.string.currency_text) + currentPizza.price());
     }
 
     private void reset(){

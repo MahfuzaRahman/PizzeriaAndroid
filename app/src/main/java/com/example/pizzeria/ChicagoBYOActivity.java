@@ -55,8 +55,11 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.chicago_byo_size_selector);
         small = radioGroup.findViewById(R.id.chicago_byo_small_btn);
+        small.setText(getString(R.string.small_text));
         medium = radioGroup.findViewById(R.id.chicago_byo_medium_btn);
+        medium.setText(getString(R.string.medium_text));
         large = radioGroup.findViewById(R.id.chicago_byo_large_btn);
+        large.setText(getString(R.string.large_text));
         small.setChecked(true);
 
         pizzaPrice = findViewById(R.id.chicago_byo_pizza_price);
@@ -90,7 +93,6 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
             @Override
             public void onClick(View view) {
                 if(toppingsAvailable.getCheckedItemCount() == 0){
-                    Log.d("myapp", "alert bruh");
                 }
                 else{
                     int position = toppingsAvailable.getCheckedItemPosition();
@@ -106,7 +108,6 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
             @Override
             public void onClick(View view) {
                 if(toppingsSelected.getCheckedItemCount() == 0){
-                    Log.d("myapp", "alert bruh");
                 }
                 else{
                     int position = toppingsSelected.getCheckedItemPosition();
