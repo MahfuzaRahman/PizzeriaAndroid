@@ -2,6 +2,8 @@ package com.example.pizzeria;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -53,6 +56,7 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
 
         addButton = findViewById(R.id.addButton);
         removeButton = findViewById(R.id.removeButton);
+        addToOrder = findViewById(R.id.add_to_order);
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.sizeSelection);
         small = radioGroup.findViewById(R.id.smallButton);
@@ -117,6 +121,34 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
                 }
             }
         });
+
+        addToOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+                alert.setTitle("Add to order?");
+                alert.setMessage(currentPizza.toString());
+                //handle the "YES" click
+                alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        currentPizzaOrder.add(currentPizza);
+                        Log.d("myapp", ""+currentPizzaOrder.getOrderSize());
+                        reset();
+                        Toast.makeText(view.getContext(),
+                                "Pizza added! " + currentPizzaOrder.getOrderSize() + "", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                    //handle the "NO" click
+                }).setNegativeButton("no", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(view.getContext(),
+                                "Pizza not added.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                AlertDialog dialog = alert.create();
+                dialog.show();
+            }
+        });
     }
 
     private void addTopping(String toppingName){
@@ -154,7 +186,7 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
     }
 
     private void setCrust(){
-        crust.setText("Crust: " + currentPizza.getCrust().toString());
+        crust.setText("PAN");
     }
 
     private void setPrice(){
@@ -176,6 +208,27 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
         else{
             addButton.setEnabled(true);
         }
+    }
+
+    private void reset(){
+        small.setChecked(true);
+        currentPizza = pizzaFactory.createBuildYourOwn();
+        currentPizza.setSize("SMALL");
+
+        availableToppings = Topping.STRINGS;
+        selectedToppings = new ArrayList<>();
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
+                availableToppings);
+        toppingsAvailable = (ListView) findViewById(R.id.toppingsAvailable);
+        toppingsAvailable.setAdapter(adapter);
+        toppingsAvailable.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
+                selectedToppings);
+        toppingsSelected = (ListView) findViewById(R.id.toppingsSelected);
+        toppingsSelected.setAdapter(adapter);
+        toppingsSelected.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
     }
 
 }

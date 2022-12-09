@@ -44,7 +44,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
         salesTax = findViewById(R.id.current_sales_tax);
         orderTotal = findViewById(R.id.current_order_total);
         pizzaList = findViewById(R.id.pizza_orders_list);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
                 MainActivity.currentPizzaOrder.getPizzaOrders());
         pizzaList.setAdapter(adapter);
         pizzaList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -127,9 +127,11 @@ public class CurrentOrderActivity extends AppCompatActivity {
         orderID.setText(""+ value);
         MainActivity.currentPizzaOrder.clearOrder();
         MainActivity.currentPizzaOrder.setOrderID(value);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
                 MainActivity.currentPizzaOrder.getPizzaOrders());
         pizzaList.setAdapter(adapter);
+        clearOrder.setEnabled(false);
+        placeOrder.setEnabled(false);
         setSalesTax();
         setOrderID();
         setOrderTotal();
@@ -144,9 +146,11 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
     private void clearAllOrders(){
         MainActivity.currentPizzaOrder.clearOrder();
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
                 MainActivity.currentPizzaOrder.getPizzaOrders());
         pizzaList.setAdapter(adapter);
+        clearOrder.setEnabled(false);
+        placeOrder.setEnabled(false);
         setSalesTax();
         setOrderID();
         setOrderTotal();
@@ -167,7 +171,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
     private void removeAnOrder(String toString){
         Pizza pizza = MainActivity.currentPizzaOrder.findPizza(toString);
         MainActivity.currentPizzaOrder.remove(pizza);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
                 MainActivity.currentPizzaOrder.getPizzaOrders());
         pizzaList.setAdapter(adapter);
         setSalesTax();

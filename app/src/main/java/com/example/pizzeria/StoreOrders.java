@@ -35,11 +35,15 @@ public class StoreOrders implements Customizable, Serializable {
 
     /**
      * Gets the store orders.
-     * @return the list of orders at the store.
+     * @return the list of orders at the store as an array.
      */
-    public String[] getStoreOrders(){
+    public String[] getStoreOrderArray(){
         String[] listAsArray = new String[storeOrders.size()];
-        return null;
+        int i = 0;
+        for(Order k : storeOrders){
+            listAsArray[i] = k.toString();
+        }
+        return listAsArray;
     }
 
     /**

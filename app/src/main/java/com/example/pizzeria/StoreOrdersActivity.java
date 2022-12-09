@@ -20,7 +20,6 @@ public class StoreOrdersActivity extends AppCompatActivity {
     private Button clearOrder;
     private ArrayAdapter<String> adapter;
     private ArrayList<Integer> orderIDs;
-    private Order[] listasArray;
     private StoreOrders currentStoreOrders;
 
 
@@ -40,6 +39,9 @@ public class StoreOrdersActivity extends AppCompatActivity {
         ordersList = findViewById(R.id.pizza_orders_list);
         clearOrder = findViewById(R.id.clear_order_btn);
 
+        if(orderIDs.size() == 0){
+            clearOrder.setEnabled(false);
+        }
         ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(this,
                 android.R.layout.simple_spinner_item, orderIDs);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -47,7 +49,7 @@ public class StoreOrdersActivity extends AppCompatActivity {
         orderNumbers.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                //hi(adapterView, view, i, l);
+                setListView(i);
             }
 
             @Override
@@ -56,26 +58,65 @@ public class StoreOrdersActivity extends AppCompatActivity {
             }
         });
 
+        clearOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer orderID = (Integer) orderNumbers.getSelectedItem();
+                Order removeThis = currentStoreOrders.findOrder(orderID);
+                currentStoreOrders.remove(removeThis);
+                orderIDs.remove(orderID);
+                setSpinner();
+            }
+        });
 
 
 
 
-        listasArray = (MainActivity.currentStoreOrders.getStoreOrders()).toArray(
-                new String[MainActivity.currentStoreOrders.getStoreOrders().size()]);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, listasArray);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, MainActivity.currentStoreOrders.getStoreOrderArray());
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//
+//        ordersList.setAdapter(adapter);
+//        ordersList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+//        ordersList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                //hi(adapterView, view, i, l);
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
+    }
+
+    public void setListView(int i){
+        Integer number = (Integer) orderNumbers.getItemAtPosition(i);
+        Order storeOrder = currentStoreOrders.findOrder(number);
+        adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, storeOrder.getPizzaOrders());
         ordersList.setAdapter(adapter);
-        ordersList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        ordersList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                //hi(adapterView, view, i, l);
-            }
+        ordersList.setChoiceMode(ListView.CHOICE_MODE_NONE);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+        orderTotal.setText(""+storeOrder.getOrderTotal());
+    }
 
-            }
-        });
+    public void setSpinner(){
+        if(orderIDs.size() == 0){
+            adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1, new ArrayList<>());
+            ordersList.setAdapter(adapter);
+
+            ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(this,
+                    android.R.layout.simple_spinner_item, orderIDs);
+            orderNumbers.setAdapter(dataAdapter);
+            orderTotal.setText("");
+        }else{
+            ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(this,
+                    android.R.layout.simple_spinner_item, orderIDs);
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            orderNumbers.setAdapter(dataAdapter);
+        }
+
     }
 }

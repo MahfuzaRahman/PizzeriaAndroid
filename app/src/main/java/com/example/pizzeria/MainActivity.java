@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
 
 
     private void openChicagoBBQChicken() {
-        startActivity(new Intent(MainActivity.this, ChicagoDeluxeActivity.class));
+        startActivity(new Intent(MainActivity.this, ChicagoBBQChickenActivity.class));
         Toast.makeText(getApplicationContext(), "Chicago BBQ Chicken Pizza",
                 Toast.LENGTH_SHORT).show();
     }

@@ -108,7 +108,7 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {//implements A
     }
 
     private void setCrust(){
-        crust.setText("Crust: THIN");
+        crust.setText("Crust: PAN");
     }
 
     private void setFlavor(){
