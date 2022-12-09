@@ -35,7 +35,7 @@
                 android:layout_marginStart="20dp"
                 android:fontFamily="sans-serif-black"
                 android:padding="2dp"
-                android:text="CHICAGO STYLE PIZZA BUILD YOUR OWN"
+                android:text="@string/chicago_style"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 

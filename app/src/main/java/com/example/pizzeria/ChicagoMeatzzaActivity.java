@@ -1,6 +1,5 @@
 package com.example.pizzeria;
 
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -23,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ChicagoMeatzzaActivity extends AppCompatActivity {//implements AdapterView.OnItemSelectedListener {
+public class ChicagoMeatzzaActivity extends AppCompatActivity {
     private RadioButton small;
     private RadioButton medium;
     private RadioButton large;

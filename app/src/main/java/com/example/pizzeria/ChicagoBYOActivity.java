@@ -40,6 +40,8 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chicago_byo_pizza);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Chicago Build Your Own Pizza");
 
         availableToppings = Topping.STRINGS;
         selectedToppings = new ArrayList<String>();
@@ -60,7 +62,7 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
         small.setChecked(true);
 
         pizzaPrice = findViewById(R.id.chicago_byo_pizza_price);
-        crust = findViewById(R.id.chicago_byo_crust_label);
+        crust = findViewById(R.id.chicago_byo_crust);
         setPrice();
         setCrust();
         setFlavor();

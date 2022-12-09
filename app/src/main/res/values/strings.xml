@@ -1,7 +1,80 @@
 <resources>
     <string name="app_name">Pizzeria</string>
 
-    // MAIN PAGE STRINGS
+    // CHICAGO PIZZA ACTIVITY STRINGS
+    <string name="chicago_bbq_action_bar_title">Chicago BBQ Chicken Pizza</string>
+    <string name="chicago_byo_action_bar_title">Chicago Build Your Own Pizza</string>
+    <string name="chicago_meatzza_action_bar_title">Chicago Meatzza Pizza</string>
+    <string name="chicago_deluxe_action_bar_title">Chicago Deluxe Pizza</string>
+    <string name="chicago_style">CHICAGO</string>
+
+    // NEW YORK PIZZA ACTIVITY STRINGS
+    <string name="ny_bbq_action_bar_title">New York BBQ Chicken Pizza</string>
+    <string name="ny_byo_action_bar_title">New York Build Your Own Pizza</string>
+    <string name="ny_meatzza_action_bar_title">New York Meatzza Pizza</string>
+    <string name="ny_deluxe_action_bar_title">New York Deluxe Pizza</string>
+    <string name="ny_style">CHICAGO</string>
+
+
+    // ADDING PIZZA TO ORDER STRINGS
+    <string name="add_alert">Add to order?</string>
+    <string name="alert_yes">yes</string>
+    <string name="alert_no">no</string>
+    <string name="toast_added">Pizza added!</string>
+    <string name="toast_not_added">Pizza not added!</string>
+
+    // CRUST LABELS
+    <string name="pan_crust">Crust: PAN</string>
+    <string name="thin_crust">Crust: THIN</string>
+    <string name="brookly_crust">Crust: BROOKLYN</string>
+    <string name="deep_dish_crust">Crust: DEEP DISH</string>
+    <string name="hand_tossed_crust">Crust: HAND TOSSED</string>
+    <string name="stuffed_crust">Crust: STUFFED</string>
+
+    // FLAVOR LABELS
+    <string name="bbq_chicken">BBQ Chicken</string>
+    <string name="deluxe">Deluxe</string>
+    <string name="meatzza">Meatzza</string>
+    <string name="build_your_own">Build Your Own</string>
+
+    // PIZZA SIZES
+    <string name="small_pizza">SMALL</string>
+    <string name="medium_pizza">MEDIUM</string>
+    <string name="large_pizza">LARGE</string>
+
+    // TOPPING BUTTONS
+    <string name="add_topping">+</string>
+    <string name="remove_topping">-</string>
+
+    // PRICE LABELS
+    <string name="pizza_price_label">Pizza Price: $</string>
+    <string name="subtotal_label">SUBTOTAL: </string>
+    <string name="sales_tax_label">SALES TAX: </string>
+    <string name="order_total_label">ORDER TOTAL: </string>
+
+    // ORDER LABELS
+    <string name="store_orders_label">STORE ORDERS</string>
+    <string name="current_order_label">CURRENT ORDER</string>
+    <string name="order_number_label">ORDER NUMBER: </string>
+    <string name="initial_order_number">1</string>
+    <string name="clear_order_btn_text">Clear Order</string>
+    <string name="place_order_btn_text">Place Order</string>
+    <string name="cancel_order_btn_text">Cancel Order</string>
+
+
+    // BUTTON TEXTS
+    <string name="add_to_order">Add To Order</string>
+
+    // CURRENT ORDER ACTIVITY STRINGS
+    <string name="current_order_action_bar_title">Current Order</string>
+    <string name="remove_alert_title">Remove Action</string>
+    <string name="remove_alert_message">Remove pizza from this order?</string>
+    <string name="toast_pizza_removed">Pizza removed from order.</string>
+    <string name="toast_not_pizza_removed">Pizza not removed from order.</string>
+
+    // STORE ORDERS ACTIVITY STRINGS
+    <string name="store_orders_action_bar_title">Store Orders</string>
+
     <string name="chicagostylepizza_desc">Chicago Style Pizza</string>
     <string name="chicagostylepizzalabel_text">CHICAGO STYLE PIZZA</string>
     <string name="newyorkstylepizza_desc">New York Style Pizza</string>

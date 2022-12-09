@@ -23,7 +23,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
             android:fontFamily="sans-serif-black"
-            android:text="CHICAGO"
+            android:text="@string/ny_style"
             android:textColor="@color/black"
             android:textSize="40sp" />
 
@@ -35,7 +35,7 @@
             android:layout_marginEnd="20dp"
             android:fontFamily="sans-serif-black"
             android:paddingTop="5dp"
-            android:text="Build Your Own"
+            android:text="@string/build_your_own"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </LinearLayout>
@@ -72,7 +72,7 @@
                         android:layout_height="48dp"
                         android:background="@color/white"
                         android:fontFamily="sans-serif-black"
-                        android:text="SMALL (h)" />
+                        android:text="@string/small_pizza" />
 
                     <RadioButton
                         android:id="@+id/new_york_medium_btn"
@@ -80,7 +80,7 @@
                         android:layout_height="48dp"
                         android:background="@color/white"
                         android:fontFamily="sans-serif-black"
-                        android:text="MEDIUM (h)" />
+                        android:text="@string/medium_pizza" />
 
                     <RadioButton
                         android:id="@+id/new_york_large_btn"
@@ -88,7 +88,7 @@
                         android:layout_height="48dp"
                         android:background="@color/white"
                         android:fontFamily="sans-serif-black"
-                        android:text="LARGE (h)" />
+                        android:text="@string/large_pizza" />
 
                 </RadioGroup>
             </androidx.cardview.widget.CardView>
@@ -130,7 +130,7 @@
                 android:layout_marginBottom="5dp"
                 android:fontFamily="sans-serif-black"
                 android:padding="5dp"
-                android:text="Crust: PAN "
+                android:text="@string/pan_crust"
                 android:textColor="@color/black"
                 android:textSize="25sp" />
 
@@ -191,7 +191,7 @@
                     android:background="@color/white"
                     android:fontFamily="sans-serif-black"
                     android:padding="5dp"
-                    android:text="Pizza Price: "
+                    android:text="@string/pizza_price_label"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -226,7 +226,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:text="Add To Order"
+            android:text="@string/add_to_order"
             app:cornerRadius="25dp" />
     </LinearLayout>
 
