@@ -34,6 +34,15 @@ public class StoreOrders implements Customizable, Serializable {
     }
 
     /**
+     * Gets the store orders.
+     * @return the list of orders at the store.
+     */
+    public String[] getStoreOrders(){
+        String[] listAsArray = new String[storeOrders.size()];
+        return null;
+    }
+
+    /**
      * Finds an order in the store's orders given an order ID.
      * Searches through the orders in the store's orders to find the matching
      * store order.

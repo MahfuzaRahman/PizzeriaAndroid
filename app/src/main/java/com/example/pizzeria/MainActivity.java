@@ -204,16 +204,16 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
         Log.d("myapp", "hi");
         String name = i.getItemName().toString();
 
-        if(name.equals("Chicago BBQ Chicken Pizza")){
+        if(name.equals("Chicago Style Pizza\nBBQ Chicken")){
             openChicagoBBQChicken();
         }
-        else if(name.equals("Chicago Deluxe Pizza")){
+        else if(name.equals("Chicago Style Pizza\nDeluxe")){
             openChicagoDeluxe();
         }
-        else if(name.equals("Chicago Meatzza Pizza")){
+        else if(name.equals("Chicago Style Pizza\nMeatzza")){
             openChicagoMeatzza();
         }
-        else if(name.equals("Chicago BuildYourOwn Pizza")){
+        else if(name.equals("Chicago Style Pizza\nBuild Your Own")){
             openChicagoBYO();
         }
 //        else if(name.equals("NY BBQ Chicken Pizza")){
