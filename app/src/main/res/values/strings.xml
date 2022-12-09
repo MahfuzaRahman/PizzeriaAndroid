@@ -96,4 +96,47 @@
     // STORE ORDER STRINGS
     <string name="store_orders_desc">Chicago Style </string>
 
+    // CHICAGO PIZZA TITLE STRINGS
+    <string name="chicagobbq_title">Chicago BBQ Chicken Pizza</string>
+    <string name="chicago_deluxe_title">Chicago Deluxe Pizza</string>
+    <string name="chicago_meatzza_title">Chicago Meatzza Pizza</string>
+
+
+
+    // ALERT TEXT STRINGS
+    <string name="alert_add_to_order">Add to order?</string>
+    <string name="yes_text">yes</string>
+    <string name="no_text">no</string>
+    <string name="pizza_not_added">Pizza not added.</string>
+
+    // CRUST STRINGS
+    <string name="crust_pan">Crust: PAN</string>
+    <string name="pan_text">PAN</string>
+    <string name="crust_deep_dish">Crust: DEEP DISH</string>
+    <string name="crust_stuffed">Crust: STUFFED</string>
+
+
+    // FLAVOR STRINGS
+    <string name="bbq_chicken">BBQ CHICKEN</string>
+    <string name="deluxe_text">DELUXE</string>
+    <string name="meatzza_text">MEATZZA</string>
+
+
+
+    // SIZE STRINGS
+    <string name="small_text">SMALL</string>
+    <string name="medium_text">MEDIUM</string>
+    <string name="large_text">LARGE</string>
+
+    // SYMBOL STRINGS
+    <string name="currency_text">$</string>
+
+
+
+
+
+
+
+
+
 </resources>

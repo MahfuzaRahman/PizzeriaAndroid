@@ -22,6 +22,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+/**
+ * ChicagoBBQChickenActivity creates an activity that allows users to order BBQChicken flavored Pizza.
+ *
+ *
+ */
 public class ChicagoBBQChickenActivity extends AppCompatActivity {
     private RadioButton small;
     private RadioButton medium;
@@ -42,7 +47,7 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chicago_pizza);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Chicago BBQ Chicken Pizza");
+        getSupportActionBar().setTitle(getString(R.string.chicagobbq_title));
 
         pizzaFactory = new ChicagoPizza();
         currentPizza = pizzaFactory.createBBQChicken();
@@ -50,8 +55,11 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.chicago_size_selector);
         small = radioGroup.findViewById(R.id.chicago_small_btn);
+        small.setText(getString(R.string.small_text));
         medium = radioGroup.findViewById(R.id.chicago_medium_btn);
+        medium.setText(getString(R.string.medium_text));
         large = radioGroup.findViewById(R.id.chicago_large_btn);
+        large.setText(getString(R.string.large_text));
         small.setChecked(true);
 
         pizzaPic = findViewById(R.id.chicago_pizza_image);
@@ -73,23 +81,20 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
-                alert.setTitle("Add to order?");
+                alert.setTitle(getString(R.string.alert_add_to_order));
                 alert.setMessage(currentPizza.toString());
                 //handle the "YES" click
-                alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                alert.setPositiveButton(getString(R.string.yes_text), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         currentPizzaOrder.add(currentPizza);
-                        Log.d("myapp", ""+currentPizzaOrder.getOrderSize());
                         reset();
-                        Toast.makeText(view.getContext(),
-                                "Pizza added! " + currentPizzaOrder.getOrderSize() + "", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                     //handle the "NO" click
-                }).setNegativeButton("no", new DialogInterface.OnClickListener() {
+                }).setNegativeButton(getString(R.string.no_text), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(view.getContext(),
-                                "Pizza not added.", Toast.LENGTH_SHORT).show();
+                                getString(R.string.pizza_not_added), Toast.LENGTH_SHORT).show();
                     }
                 });
                 AlertDialog dialog = alert.create();
@@ -105,11 +110,11 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {
     }
 
     private void setCrust(){
-        crust.setText("Crust: PAN");
+        crust.setText(getString(R.string.crust_pan));
     }
 
     private void setFlavor(){
-        flavor.setText("BBQ Chicken");
+        flavor.setText(getString(R.string.bbq_chicken));
         pizzaPic.setImageResource(R.drawable.chicago_bbq_pizza);
     }
 
@@ -121,7 +126,7 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {
         else if(large.isChecked())
             currentPizza.setSize("LARGE");
         pizzaPrice.setText("");
-        pizzaPrice.setText("$" + currentPizza.price());
+        pizzaPrice.setText(getString(R.string.currency_text)  + currentPizza.price());
     }
 
     private void reset(){
