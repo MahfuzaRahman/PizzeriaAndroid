@@ -1,6 +1,5 @@
 package com.example.pizzeria;
 
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -23,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ChicagoBBQChickenActivity extends AppCompatActivity {
+public class NewYorkBBQChickenActivity extends AppCompatActivity {
     private RadioButton small;
     private RadioButton medium;
     private RadioButton large;
@@ -41,25 +40,25 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chicago_pizza);
+        setContentView(R.layout.activity_new_york_pizza);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Chicago BBQ Chicken Pizza");
+        getSupportActionBar().setTitle("New York BBQ Chicken Pizza");
 
-        pizzaFactory = new ChicagoPizza();
+        pizzaFactory = new NYPizza();
         currentPizza = pizzaFactory.createBBQChicken();
         currentPizzaOrder = MainActivity.currentPizzaOrder;
 
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.chicago_size_selector);
-        small = radioGroup.findViewById(R.id.chicago_small_btn);
-        medium = radioGroup.findViewById(R.id.chicago_medium_btn);
-        large = radioGroup.findViewById(R.id.chicago_large_btn);
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.new_york_size_selector);
+        small = radioGroup.findViewById(R.id.new_york_small_btn);
+        medium = radioGroup.findViewById(R.id.new_york_medium_btn);
+        large = radioGroup.findViewById(R.id.new_york_large_btn);
         small.setChecked(true);
 
-        pizzaPic = findViewById(R.id.chicago_pizza_image);
-        pizzaPrice = findViewById(R.id.chicago_pizza_price);
-        crust = findViewById(R.id.chicago_crust_label);
-        flavor = findViewById(R.id.chicago_flavor);
-        addToOrder = findViewById(R.id.chicago_add_to_order_btn);
+        pizzaPic = findViewById(R.id.new_york_pizza_image);
+        pizzaPrice = findViewById(R.id.new_york_pizza_price);
+        crust = findViewById(R.id.new_york_crust_label);
+        flavor = findViewById(R.id.new_york_flavor);
+        addToOrder = findViewById(R.id.new_york_add_to_order_btn);
         setPrice();
         setCrust();
         setFlavor();
@@ -76,17 +75,14 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {
                 AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
                 alert.setTitle("Add to order?");
                 alert.setMessage(currentPizza.toString());
-                //handle the "YES" click
                 alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         currentPizzaOrder.add(currentPizza);
-                        Log.d("myapp", ""+currentPizzaOrder.getOrderSize());
                         reset();
                         Toast.makeText(view.getContext(),
-                                "Pizza added! " + currentPizzaOrder.getOrderSize() + "", Toast.LENGTH_SHORT).show();
+                                "Pizza added! ", Toast.LENGTH_SHORT).show();
                         finish();
                     }
-                    //handle the "NO" click
                 }).setNegativeButton("no", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(view.getContext(),
@@ -100,18 +96,17 @@ public class ChicagoBBQChickenActivity extends AppCompatActivity {
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
                 currentPizza.getToppings());
-        toppings = (ListView) findViewById(R.id.chicago_toppings_list);
+        toppings = (ListView) findViewById(R.id.new_york_toppings_list);
         toppings.setAdapter(adapter);
-
     }
 
     private void setCrust(){
-        crust.setText("Crust: PAN");
+        crust.setText("Crust: THIN");
     }
 
     private void setFlavor(){
         flavor.setText("BBQ Chicken");
-        pizzaPic.setImageResource(R.drawable.chicago_bbq_pizza);
+        pizzaPic.setImageResource(R.drawable.ny_bbq_pizza);
     }
 
     private void setPrice(){

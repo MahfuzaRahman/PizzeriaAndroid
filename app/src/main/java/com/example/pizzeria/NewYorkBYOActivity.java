@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 
-public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterView.OnItemSelectedListener {
+public class NewYorkBYOActivity extends AppCompatActivity {
     private RadioButton small;
     private RadioButton medium;
     private RadioButton large;
@@ -39,28 +39,28 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chicago_byo_pizza);
+        setContentView(R.layout.activity_new_york_byo_pizza);
 
         availableToppings = Topping.STRINGS;
         selectedToppings = new ArrayList<String>();
 
-        pizzaFactory = new ChicagoPizza();
+        pizzaFactory = new NYPizza();
         currentPizza = pizzaFactory.createBuildYourOwn();
         currentPizzaOrder = MainActivity.currentPizzaOrder;
-        pizzaPic = findViewById(R.id.chicago_byo_pizza_image);
-        flavor = findViewById(R.id.chicago_byo_flavor);
-        addButton = findViewById(R.id.chicago_byo_add_topping_btn);
-        removeButton = findViewById(R.id.chicago_byo_remove_topping_btn);
-        addToOrder = findViewById(R.id.chicago_byo_add_to_order_btn);
+        pizzaPic = findViewById(R.id.new_york_byo_pizza_image);
+        flavor = findViewById(R.id.new_york_byo_flavor);
+        addButton = findViewById(R.id.ny_add_topping_btn);
+        removeButton = findViewById(R.id.ny_remove_topping_btn);
+        addToOrder = findViewById(R.id.new_york_byo_add_to_order_btn);
 
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.chicago_byo_size_selector);
-        small = radioGroup.findViewById(R.id.chicago_byo_small_btn);
-        medium = radioGroup.findViewById(R.id.chicago_byo_medium_btn);
-        large = radioGroup.findViewById(R.id.chicago_byo_large_btn);
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.new_york_byo_size_selector);
+        small = radioGroup.findViewById(R.id.new_york_byo_small_btn);
+        medium = radioGroup.findViewById(R.id.new_york_byo_medium_btn);
+        large = radioGroup.findViewById(R.id.new_york_byo_large_btn);
         small.setChecked(true);
 
-        pizzaPrice = findViewById(R.id.chicago_byo_pizza_price);
-        crust = findViewById(R.id.chicago_byo_crust_label);
+        pizzaPrice = findViewById(R.id.new_york_byo_pizza_price);
+        crust = findViewById(R.id.new_york_byo_crust_label);
         setPrice();
         setCrust();
         setFlavor();
@@ -75,13 +75,13 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
                 availableToppings);
-        toppingsAvailable = (ListView) findViewById(R.id.chicago_available_toppings);
+        toppingsAvailable = (ListView) findViewById(R.id.new_york_byo_available_toppings);
         toppingsAvailable.setAdapter(adapter);
         toppingsAvailable.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
                 selectedToppings);
-        toppingsSelected = (ListView) findViewById(R.id.chicago_selected_topping);
+        toppingsSelected = (ListView) findViewById(R.id.ny_selected_topping);
         toppingsSelected.setAdapter(adapter);
         toppingsSelected.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
@@ -152,13 +152,13 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
             availableToppings.remove(toppingName);
             adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
                     availableToppings);
-            toppingsAvailable = (ListView) findViewById(R.id.chicago_available_toppings);
+            toppingsAvailable = (ListView) findViewById(R.id.new_york_byo_available_toppings);
             toppingsAvailable.setAdapter(adapter);
         }
         selectedToppings.add(toppingName);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
                 selectedToppings);
-        toppingsSelected = (ListView) findViewById(R.id.chicago_selected_topping);
+        toppingsSelected = (ListView) findViewById(R.id.ny_selected_topping);
         toppingsSelected.setAdapter(adapter);
         setPrice();
         checkNumberOfToppings();
@@ -169,13 +169,13 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
             selectedToppings.remove(toppingName);
             adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
                     selectedToppings);
-            toppingsSelected = (ListView) findViewById(R.id.chicago_selected_topping);
+            toppingsSelected = (ListView) findViewById(R.id.ny_selected_topping);
             toppingsSelected.setAdapter(adapter);
         }
         availableToppings.add(toppingName);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
                 availableToppings);
-        toppingsAvailable = (ListView) findViewById(R.id.chicago_available_toppings);
+        toppingsAvailable = (ListView) findViewById(R.id.new_york_byo_available_toppings);
         toppingsAvailable.setAdapter(adapter);
         setPrice();
         checkNumberOfToppings();
@@ -187,7 +187,7 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
 
     private void setFlavor(){
         flavor.setText("BBQ Chicken");
-        pizzaPic.setImageResource(R.drawable.chicago_bbq_pizza);
+        pizzaPic.setImageResource(R.drawable.ny_byo_pizza);
     }
 
     private void setPrice(){
@@ -221,13 +221,13 @@ public class ChicagoBYOActivity extends AppCompatActivity {//implements AdapterV
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
                 availableToppings);
-        toppingsAvailable = (ListView) findViewById(R.id.chicago_available_toppings);
+        toppingsAvailable = (ListView) findViewById(R.id.new_york_byo_available_toppings);
         toppingsAvailable.setAdapter(adapter);
         toppingsAvailable.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,
                 selectedToppings);
-        toppingsSelected = (ListView) findViewById(R.id.chicago_selected_topping);
+        toppingsSelected = (ListView) findViewById(R.id.ny_selected_topping);
         toppingsSelected.setAdapter(adapter);
         toppingsSelected.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
     }

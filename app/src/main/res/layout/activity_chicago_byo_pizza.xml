@@ -7,23 +7,43 @@
     android:background="@color/yellow"
     tools:context=".ChicagoBYOActivity">
 
-    <TextView
-        android:id="@+id/label"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:fontFamily="sans-serif-black"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="20dp"
-        android:textColor="@color/black"
-        android:textSize="32sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="4dp" />
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/chicago_byo_style_label"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif-black"
+            android:text="CHICAGO"
+            android:textColor="@color/black"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/chicago_byo_flavor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif-black"
+            android:paddingTop="5dp"
+            android:text="Build Your Own"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="265dp"
-        android:layout_marginTop="80dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="100dp"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -40,14 +60,14 @@
                 app:cardCornerRadius="25dp">
 
                 <RadioGroup
-                    android:id="@+id/sizeSelection"
+                    android:id="@+id/chicago_byo_size_selector"
                     android:layout_width="130dp"
                     android:layout_height="140dp"
                     android:layout_margin="5dp"
                     android:layout_marginTop="5dp">
 
                     <RadioButton
-                        android:id="@+id/smallButton"
+                        android:id="@+id/chicago_byo_small_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -55,7 +75,7 @@
                         android:text="SMALL (h)" />
 
                     <RadioButton
-                        android:id="@+id/mediumButton"
+                        android:id="@+id/chicago_byo_medium_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -63,7 +83,7 @@
                         android:text="MEDIUM (h)" />
 
                     <RadioButton
-                        android:id="@+id/largeButton"
+                        android:id="@+id/chicago_byo_large_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -78,10 +98,10 @@
                 android:layout_height="130dp"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="20dp"
-                app:cardCornerRadius="90dp" >
+                app:cardCornerRadius="90dp">
 
                 <ImageView
-                    android:id="@+id/chicago_pizza_image"
+                    android:id="@+id/chicago_byo_pizza_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleX="0.75"
@@ -107,7 +127,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/chicago_crust_label"
+                    android:id="@+id/chicago_byo_crust_label"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_marginStart="15dp"
@@ -119,7 +139,7 @@
                     android:textSize="25sp" />
 
                 <TextView
-                    android:id="@+id/crustText"
+                    android:id="@+id/chicago_byo_crust"
                     android:layout_width="200dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="15dp"
@@ -137,53 +157,63 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="345dp"
+        android:layout_height="225dp"
+        android:layout_marginTop="340dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="143dp"
-            android:layout_height="158dp"
-            android:layout_margin="20dp"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             app:cardCornerRadius="25dp">
 
             <ListView
-                android:id="@+id/toppingsAvailable"
-                android:layout_width="101dp"
+                android:id="@+id/chicago_available_toppings"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="20dp"
+                android:layout_margin="15dp"
                 android:background="@color/pizza_orders_list_color" />
 
         </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="R" />
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="A" />
+            <Button
+                android:id="@+id/chicago_byo_add_topping_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="+" />
+
+            <Button
+                android:id="@+id/chicago_byo_remove_topping_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="-" />
+        </LinearLayout>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="149dp"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             app:cardCornerRadius="25dp">
 
             <ListView
-                android:id="@+id/toppingsAvailable"
-                android:layout_width="104dp"
+                android:id="@+id/chicago_selected_topping"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="20dp"
+                android:layout_margin="15dp"
                 android:background="@color/pizza_orders_list_color" />
-
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
@@ -191,7 +221,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="570dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -208,7 +238,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/chicago_byo_pizza_price_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
@@ -222,7 +252,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/pizzaPrice"
+                    android:id="@+id/chicago_byo_pizza_price"
                     android:layout_width="180dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="15dp"
@@ -242,19 +272,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="620dp"
+        android:layout_marginTop="640dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/add_to_order"
+            android:id="@+id/chicago_byo_add_to_order_btn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:text="Add To Order"
-            app:cornerRadius="25dp"
-            />
+            app:cornerRadius="25dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

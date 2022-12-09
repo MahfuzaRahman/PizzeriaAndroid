@@ -30,9 +30,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        currentPizzaOrder = new Order();
-//        currentStoreOrders = new StoreOrders();
-
         currentOrder = findViewById(R.id.current_order_card);
         storeOrders = findViewById(R.id.store_orders_card);
         currentOrder.setOnClickListener(new View.OnClickListener() {
@@ -60,10 +57,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
         Order currentOrder = currentPizzaOrder;
     }
 
-   // @Override
-    public void onResume(Bundle savedInstanceState) {
-        //Order
-    }
 
     private void setupAvailableItems(){
         String [] itemNames = {"Chicago Style Pizza\nBBQ Chicken", "Chicago Style Pizza\nDeluxe",
@@ -73,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
         for (int i = 0; i < itemNames.length; i++)
             items.add(new Item(itemNames[i], itemImages[i]));
     }
-
 
     private void openChicagoBBQChicken() {
         startActivity(new Intent(MainActivity.this, ChicagoBBQChickenActivity.class));
@@ -98,106 +90,30 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
         Toast.makeText(getApplicationContext(), "Chicago Build Your Own Pizza",
                 Toast.LENGTH_SHORT).show();
     }
-//
-//    private void openChicagoDeluxe() {
-//        CardView chicagoButton = (CardView) findViewById(R.id.chicago_card);
-//        chicagoButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, ChicagoPizzaActivity.class));
-//                Toast.makeText(getApplicationContext(), "Chicago Style Pizza", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        // edited to add
-//    }
-//
-//    private void openChicagoMeatzza() {
-//        CardView chicagoButton = (CardView) findViewById(R.id.chicago_card);
-//        chicagoButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, ChicagoPizzaActivity.class));
-//                Toast.makeText(getApplicationContext(), "Chicago Style Pizza", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        // edited to add
-//    }
-//
-//    private void openChicagoBYO() {
-//        CardView chicagoButton = (CardView) findViewById(R.id.chicago_card);
-//        chicagoButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, ChicagoPizzaActivity.class));
-//                Toast.makeText(getApplicationContext(), "Chicago Style Pizza", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        // edited to add
-//    }
-//
-//
-//    private void openNewYorkBBQChicken() {
-//        CardView chicagoButton = (CardView) findViewById(R.id.new_york_card);
-//        chicagoButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, NewYorkPizzaActivity.class));
-//                Toast.makeText(getApplicationContext(), "New York Style Pizza", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-//
-//    private void openNewYorkDeluxe() {
-//        CardView chicagoButton = (CardView) findViewById(R.id.new_york_card);
-//        chicagoButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, NewYorkPizzaActivity.class));
-//                Toast.makeText(getApplicationContext(), "New York Style Pizza", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-//
-//    private void openNewYorkMeatzza() {
-//        CardView chicagoButton = (CardView) findViewById(R.id.new_york_card);
-//        chicagoButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, NewYorkPizzaActivity.class));
-//                Toast.makeText(getApplicationContext(), "New York Style Pizza", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-//
-//    private void openNewYorkBYO() {
-//        CardView chicagoButton = (CardView) findViewById(R.id.new_york_card);
-//        chicagoButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, NewYorkPizzaActivity.class));
-//                Toast.makeText(getApplicationContext(), "New York Style Pizza", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-//
-//
-//    private void openPizzeria() {
-//        CardView chicagoButton = (CardView) findViewById(R.id.pizzeria_card);
-//        chicagoButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, StoreOrdersActivity.class));
-//                Toast.makeText(getApplicationContext(), "Pizzeria Orders", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-//
-//    private void openCurrentOrder() {
-//        CardView chicagoButton = (CardView) findViewById(R.id.current_order_card);
-//        chicagoButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, CurrentOrderActivity.class));
-//                Toast.makeText(getApplicationContext(), "Current Order", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
 
-    public void addOrderToStoreOrder(Order order){
-        currentStoreOrders.add(order);
+    private void openNYBBQChicken() {
+        startActivity(new Intent(MainActivity.this, NewYorkBBQChickenActivity.class));
+        Toast.makeText(getApplicationContext(), "New York BBQ Chicken Pizza",
+                Toast.LENGTH_SHORT).show();
     }
 
+    private void openNYDeluxe() {
+        startActivity(new Intent(MainActivity.this, NewYorkDeluxeActivity.class));
+        Toast.makeText(getApplicationContext(), "New York Deluxe Pizza",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    private void openNYMeatzza() {
+        startActivity(new Intent(MainActivity.this, NewYorkMeatzzaActivity.class));
+        Toast.makeText(getApplicationContext(), "New York Meatzza Pizza",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    private void openNYBYO() {
+        startActivity(new Intent(MainActivity.this, NewYorkBYOActivity.class));
+        Toast.makeText(getApplicationContext(), "New York Build Your Own Pizza",
+                Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public void onItemClicked(Item i) {
@@ -216,18 +132,18 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
         else if(name.equals("Chicago Style Pizza\nBuild Your Own")){
             openChicagoBYO();
         }
-//        else if(name.equals("NY BBQ Chicken Pizza")){
-//            openNewYorkBBQChicken();
-//        }
-//        else if(name.equals("NY Deluxe Pizza")){
-//            openNewYorkDeluxe();
-//        }
-//        else if(name.equals("NY Meatzza Pizza")){
-//            openNewYorkMeatzza();
-//        }
-//        else if(name.equals("NY BuildYourOwn Pizza")){
-//            openNewYorkBYO();
-//        }
+        else if(name.equals("New York Style Pizza\nBBQ Chicken")){
+            openNYBBQChicken();
+        }
+        else if(name.equals("New York Style Pizza\nDeluxe")){
+            openNYDeluxe();
+        }
+        else if(name.equals("New York Style Pizza\nMeatzza")){
+            openNYMeatzza();
+        }
+        else if(name.equals("New York Style Pizza\nBuild Your Own")){
+            openNYBYO();
+        }
     }
 
 
